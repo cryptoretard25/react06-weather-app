@@ -34,17 +34,6 @@ const requestCoords = async (city) => {
   }
 };
 
-// const requestWeather = async (city, units = CONSTANTS.OPENWEATHER_UNITS) => {
-//   try {
-//     const response = await axios.get(
-//       `${CONSTANTS.WEATHER_REQUEST_URL}q=${city}&units=${units}&APPID=${CONSTANTS.API_KEY}`
-//     );
-//     console.log(response.data);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
 const requestForecast = async (city, units = CONSTANTS.OPENWEATHER_UNITS) => {
   try {
     const { name, lat, lon } = await requestCoords(city);
@@ -55,7 +44,6 @@ const requestForecast = async (city, units = CONSTANTS.OPENWEATHER_UNITS) => {
     return { name, current, daily, hourly, timezone };
   } catch (error) {
     console.error(error);
-    //return error.code;
   }
 };
 

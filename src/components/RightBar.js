@@ -1507,16 +1507,14 @@ const forecast = {
   timezone: "Europe/Moscow",
 };
 
-const weather = {};
-
 function RightBar() {
   return (
     <div className="right-bar">
       <button
         onClick={async () => {
-          console.log(await requestForecast('Moscoww'))
-          // console.log(utils.getCurrentWeather(forecast, "metric"));
-          // console.log(utils.getAdditionalInfo(forecast, "metric"));
+          // console.log(await requestForecast('Moscoww'))
+          console.log(utils.getCurrentWeather(forecast, "metric"));
+          console.log(utils.getAdditionalInfo(forecast, "metric"));
         }}
       >
         GET
