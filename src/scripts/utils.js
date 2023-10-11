@@ -78,22 +78,6 @@ export function timestampToCurrentHour(timestamp, timezone) {
   return `${hour} ${label.toLowerCase()}`;
 }
 
-// export function roundUp(value) {
-//   return Math.round(value);
-// }
-
-// export function roundUpToOne(value) {
-//   return Math.round(value * 10) / 10;
-// }
-
-// export function setTempUnits(units) {
-//   return units === "metric" ? "°C" : "°F";
-// }
-
-// export function setSpeedUnits(units) {
-//   return units === "metric" ? "km/h" : "mph";
-// }
-
 export function convertTemp(value, units) {
   return units === "metric"
     ? `${Math.round(value)} °C`
