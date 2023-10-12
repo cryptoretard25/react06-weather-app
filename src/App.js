@@ -1,10 +1,11 @@
-import React from 'react';
-import './App.css';
-import useWeather from './hooks/useWeather';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import LeftBar from './components/LeftBar';
-import RightBar from './components/RightBar';
+import React from "react";
+import "./App.css";
+import useWeather from "./hooks/useWeather";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import LeftBar from "./components/LeftBar";
+import RightBar from "./components/RightBar";
+import FooterInterface from "./components/FooterInterface";
 
 function App() {
   //const [forecast, setForecast] = useWeather()
@@ -20,10 +21,12 @@ function App() {
           temp={"10 °C"}
           icon={"./imgs/cloudy-day.svg"}
         />
-        <div className="center-bar"></div>
+        <div className="center-bar" />
         <RightBar />
       </Header>
-      <Footer>Footer</Footer>
+      <Footer>
+        <FooterInterface/>
+      </Footer>
     </div>
   );
 }

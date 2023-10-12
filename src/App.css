@@ -137,13 +137,10 @@ input[type="text"]:focus {
 .search-btn > img {
   width: 25px;
 }
-
 /* </LeftBarSearch> */
 
-
-
+/*---------------------------------------------------------------------------------*/
 /* <Footer> */
-
 .footer {
   border: 1px solid white;
   padding: 20px 40px 40px 40px;
@@ -154,25 +151,15 @@ input[type="text"]:focus {
   flex-direction: column;
   gap: 30px;
 }
-
 /* </Footer> */
 
-/*RIGHT*/
-
-
-
-
-/*CENTER*/
-
-/*LEFT*/
-
-/*****************************************************************************************/
-/*LOWER BOX*/
-
+/*---------------------------------------------------------------------------------*/
+/* <FooterInterface> */
 .interface {
   display: flex;
   gap: 25px;
 }
+
 .interface-btn {
   display: flex;
   justify-content: center;
@@ -180,19 +167,38 @@ input[type="text"]:focus {
   padding: 10px 20px;
   cursor: pointer;
 }
-.selected {
-  border: 2px solid white;
-}
-.change_left {
+
+.change-hours {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
 }
-.change_left > img,
-.change_right > img {
+
+.change {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 25px;
+  width: 15px;
   cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+.change-left {
+  background-image: url("./imgs/arrow_left.svg");
+}
+
+.change-right {
+  background-image: url("./imgs/arrow_right.svg");
+}
+
+.selected {
+  border: 2px solid white;
+}
+
 .dot {
   position: relative;
   top: -1px;
@@ -202,15 +208,22 @@ input[type="text"]:focus {
   border-radius: 50%;
   cursor: pointer;
 }
+/* </FooterInterface> */
+
+/*LOWER BOX*/
+
+
+
+.change_left > img,
+.change_right > img {
+  height: 25px;
+  cursor: pointer;
+}
+
 .dot-selected {
   background-color: white;
 }
-.change-hours {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
+
 .show {
   display: flex;
 }
