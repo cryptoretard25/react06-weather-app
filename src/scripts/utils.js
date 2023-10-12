@@ -132,7 +132,7 @@ export function getDailyForecast(forecast, units = null) {
     .map((day, index) => {
       if (index === 0) return null;
       return {
-        day: timestampToWeekday(day.dt, timezone),
+        weekday: timestampToWeekday(day.dt, timezone),
         date: timestampToShortDate(day.dt, timezone),
         maxTemp: getTemp(day.temp.max, units),
         minTemp: getTemp(day.temp.min, units),
@@ -144,14 +144,19 @@ export function getDailyForecast(forecast, units = null) {
 
 export function getHourlyForecast(forecast, units = null) {
   const { hourly, timezone } = forecast;
-  return hourly
+  const arr = hourly
     .map((hour, index) => {
       if (index > 23) return null;
       return {
-        hour: timestampToCurrentHour(hour.dt, timezone),
+        time: timestampToCurrentHour(hour.dt, timezone),
         temp: getTemp(hour.temp, units),
         icon: hour.weather[0].icon,
       };
     })
     .filter((item) => item !== null);
+  const result = [];
+  while(arr.length){
+    result.push(arr.splice(0, 8));
+  }
+  return result
 }

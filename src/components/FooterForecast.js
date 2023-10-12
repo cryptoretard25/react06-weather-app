@@ -1,40 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import FooterForecastDaily from "./FooterForecastDaily";
+import FooterForecastHourly from "./FooterForecastHourly";
 import { FooterContext } from "../context/FooterContextProvider";
 
 function FooterForecast() {
-  const { activeButton } = useContext(FooterContext);
+  const { activeButton, dotIndex, dailyForecast, hourlyForecast } =
+    useContext(FooterContext);
+
   return (
     <div className="forecasts-block">
-      {activeButton[0] && (
-        <>
+      {activeButton[0] &&
+        dailyForecast &&
+        dailyForecast.map((day, index) => (
           <FooterForecastDaily
-            weekday={"Friday"}
-            date={"Oct 13"}
-            maxTemp={"13 °C"}
-            minTemp={"5 °C"}
-            icon={"./imgs/rainy.svg"}
+            key={index}
+            weekday={day.weekday}
+            date={day.date}
+            maxTemp={day.maxTemp}
+            minTemp={day.minTemp}
+            icon={day.icon}
           />
-          <FooterForecastDaily
-            weekday={"Saturday"}
-            date={"Oct 14"}
-            maxTemp={"15 °C"}
-            minTemp={"9 °C"}
-            icon={"./imgs/rainy.svg"}
+        ))}
+      {activeButton[1] &&
+        hourlyForecast &&
+        hourlyForecast[dotIndex].map((hour, index) => (
+          <FooterForecastHourly
+            key={index}
+            time={hour.time}
+            temp={hour.temp}
+            icon={hour.icon}
           />
-        </>
-      )}
-      {activeButton[1] && (
-        <>
-          <FooterForecastDaily
-            weekday={"Sunday"}
-            date={"Oct 15"}
-            maxTemp={"10 °C"}
-            minTemp={"6 °C"}
-            icon={"./imgs/cloudy.svg"}
-          />
-        </>
-      )}
+        ))}
     </div>
   );
 }

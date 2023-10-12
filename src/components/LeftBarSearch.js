@@ -2,7 +2,7 @@ import React from 'react'
 
 function LeftBarSearch() {
   return (
-    <div class="search-container">
+    <div className="search-container">
       <input
         type="text"
         name="search"

@@ -1,8 +1,9 @@
 import React from "react";
+import * as utils from "../scripts/utils";
 
-function FooterForecastDaily({weekday, date, maxTemp, minTemp, icon}) {
+function FooterForecastDaily({ weekday, date, maxTemp, minTemp, icon }) {
   return (
-    <div className="daily-forecast">
+    <div className="forecast">
       <div>{weekday}</div>
       <div>{date}</div>
       <div>
@@ -10,7 +11,7 @@ function FooterForecastDaily({weekday, date, maxTemp, minTemp, icon}) {
         <p>{minTemp}</p>
       </div>
       <div className="daily_icon">
-        <img src={icon} />
+        <img src={utils.getIconByCode(icon)} alt="" />
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ import { FooterContextProvider } from "./context/FooterContextProvider";
 import FooterForecast from "./components/FooterForecast";
 
 function App() {
-  //const [forecast, setForecast] = useWeather()
+  const [forecast, setCurrentLocation] = useWeather()
 
   return (
     <div className="App">
@@ -27,7 +27,7 @@ function App() {
         <RightBar />
       </Header>
 
-      <FooterContextProvider>
+      <FooterContextProvider forecast={forecast}>
         <Footer>
           <FooterInterface />
           <FooterForecast />
