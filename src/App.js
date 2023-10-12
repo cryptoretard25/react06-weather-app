@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import LeftBar from "./components/LeftBar";
 import RightBar from "./components/RightBar";
 import FooterInterface from "./components/FooterInterface";
+import { FooterContextProvider } from "./context/FooterContextProvider";
+import FooterForecast from "./components/FooterForecast";
 
 function App() {
   //const [forecast, setForecast] = useWeather()
@@ -24,9 +26,13 @@ function App() {
         <div className="center-bar" />
         <RightBar />
       </Header>
-      <Footer>
-        <FooterInterface/>
-      </Footer>
+
+      <FooterContextProvider>
+        <Footer>
+          <FooterInterface />
+          <FooterForecast />
+        </Footer>
+      </FooterContextProvider>
     </div>
   );
 }

@@ -1,34 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import FooterInterfaceDots from "./FooterInterfaceDots";
+import { FooterContext } from "../context/FooterContextProvider";
 
 function FooterInterface() {
-  const [active, setActive] = useState({ daily: true, hourly: false });
+  const { activeButton, setActiveButton } = useContext(FooterContext);
 
-  const isActive = (state, id) => {
-    return state[id] ? "selected" : "";
+  const handleDailyClick = () => {
+    setActiveButton([true, false]);
   };
 
-  const handleDailyClick = (e) => {
-    const id = e.target.id;
-    if (id === "daily") setActive({ [id]: true, hourly: false });
-    else setActive({ [id]: true, daily: false });
+  const handleHourlyClick = () => {
+    setActiveButton([false, true]);
   };
 
-  const dots = active.hourly && <FooterInterfaceDots />;
+  const dots = activeButton[1] && <FooterInterfaceDots />;
 
   return (
     <div className="interface">
       <div
-        className={`interface-btn ${isActive(active, "daily")}`}
+        className={`interface-btn ${activeButton[0] ? "selected" : ""}`}
         id="daily"
         onClick={handleDailyClick}
       >
         Daily
       </div>
       <div
-        className={`interface-btn ${isActive(active, "hourly")}`}
+        className={`interface-btn ${activeButton[1] ? "selected" : ""}`}
         id="hourly"
-        onClick={handleDailyClick}
+        onClick={handleHourlyClick}
       >
         Hourly
       </div>

@@ -208,7 +208,37 @@ input[type="text"]:focus {
   border-radius: 50%;
   cursor: pointer;
 }
+
+.dot-selected {
+  background-color: white;
+}
 /* </FooterInterface> */
+
+/* <FooterForecast> */
+
+/* </FooterForecast> */
+
+/* <FooterForecastDaily> */
+.daily-forecast,
+.hourly-forecast {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.daily_icon {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.daily_icon > img {
+  width: 50px;
+  align-self: flex-end;
+}
+
+
+/* </ FooterForecastDaily> */
 
 /*LOWER BOX*/
 
@@ -220,9 +250,7 @@ input[type="text"]:focus {
   cursor: pointer;
 }
 
-.dot-selected {
-  background-color: white;
-}
+
 
 .show {
   display: flex;
@@ -234,21 +262,8 @@ input[type="text"]:focus {
   display: flex;
   justify-content: space-between;
 }
-.daily-forecast,
-.hourly-forecast {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.daily_icon {
-  flex: 1;
-  display: flex;
-  align-items: flex-end;
-}
-.daily_icon > img {
-  width: 50px;
-  align-self: flex-end;
-}
+
+
 
 ::placeholder {
   color: white;
