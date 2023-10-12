@@ -1,28 +1,25 @@
 export function getIconByCode(code) {
   const codes = {
-    "01d": "../imgs/sun.svg",
-    "01n": "../imgs/moon.svg",
-    "02d": "../imgs/cloudy-day.svg",
+    "01d": "./imgs/sun.svg",
+    "01n": "./imgs/moon.svg",
+    "02d": "./imgs/cloudy-day.svg",
     "02n": "./imgs/cloudy-night.svg",
-    "03d": "../imgs/cloud.svg",
-    "03n": "../imgs/cloud.svg",
-    "04d": "../imgs/cloudy.svg",
-    "04n": "../imgs/cloudy.svg",
-    "09d": "../imgs/rainy.svg",
-    "09n": "../imgs/rainy.svg",
-    "10d": "../imgs/rainy.svg",
-    "10n": "../imgs/rainy.svg",
-    "11d": "../imgs/lightning.svg",
-    "11n": "../imgs/lightning.svg",
-    "13d": "../imgs/snow.svg",
-    "13n": "../imgs/snow.svg",
-    "50d": "../imgs/mist.svg",
-    "50n": "../imgs/mist.svg",
+    "03d": "./imgs/cloud.svg",
+    "03n": "./imgs/cloud.svg",
+    "04d": "./imgs/cloudy.svg",
+    "04n": "./imgs/cloudy.svg",
+    "09d": "./imgs/rainy.svg",
+    "09n": "./imgs/rainy.svg",
+    "10d": "./imgs/rainy.svg",
+    "10n": "./imgs/rainy.svg",
+    "11d": "./imgs/lightning.svg",
+    "11n": "./imgs/lightning.svg",
+    "13d": "./imgs/snow.svg",
+    "13n": "./imgs/snow.svg",
+    "50d": "./imgs/mist.svg",
+    "50n": "./imgs/mist.svg",
   };
-
-  const image = new Image(100);
-  image.src = codes[code];
-  return image;
+  return codes[code];
 }
 
 export function capitalize(string) {
@@ -78,17 +75,28 @@ export function timestampToCurrentHour(timestamp, timezone) {
   return `${hour} ${label.toLowerCase()}`;
 }
 
-export function getTemp(value, units) {
-  if (units === "metric") return `${Math.round((value - 32) / 1.8)} °C`;
-  if (units === "imperial") return `${Math.round(value * 1.8 + 32)} °F`;
+export function getTemp(value, units, converted) {
+  if (units === "metric" && converted) {
+    converted = false;
+    return `${Math.round((value - 32) / 1.8)} °C`;
+  }
+  if (units === "imperial") {
+    converted = true;
+    return `${Math.round(value * 1.8 + 32)} °F`;
+  }
   return `${Math.round(value)} °C`;
 }
 
-export function getSpeed(value, units) {
-  if (units === "metric")
+export function getSpeed(value, units, converted) {
+  if (units === "metric" && converted) {
+    converted = false;
     return `${Math.round(value * 1.609344 * 10) / 10} km/h`;
-  if (units === "imperial")
+  }
+  if (units === "imperial") {
+    converted = true;
     return `${Math.round((value / 1.609344) * 10) / 10} mph`;
+  }
+
   return `${Math.round(value * 10) / 10} km/h`;
 }
 

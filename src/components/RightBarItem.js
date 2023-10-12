@@ -1,0 +1,17 @@
+import React from 'react'
+
+function RightBarItem({logo, title, data}) {
+  return (
+    <div className="weather_details">
+      <div className="details_icon">
+        <img src={logo} alt="Feels Like" />
+      </div>
+      <div className="details_info">
+        <p>{title}</p>
+        <h1>{data}</h1>
+      </div>
+    </div>
+  );
+}
+
+export default RightBarItem

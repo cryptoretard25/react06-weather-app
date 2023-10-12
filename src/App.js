@@ -7,18 +7,23 @@ import LeftBar from './components/LeftBar';
 import RightBar from './components/RightBar';
 
 function App() {
-  const [forecast, setForecast] = useWeather()
+  //const [forecast, setForecast] = useWeather()
 
   return (
     <div className="App">
       <Header>
-        <LeftBar />
-        <div className='center-bar'></div>
+        <LeftBar
+          precipitation={"Few Clouds"}
+          city={"Stockholm"}
+          date={"Thu, October 12, 2023"}
+          time={"05:15:28"}
+          temp={"10 °C"}
+          icon={"./imgs/cloudy-day.svg"}
+        />
+        <div className="center-bar"></div>
         <RightBar />
       </Header>
-      <Footer>
-        Footer
-      </Footer>
+      <Footer>Footer</Footer>
     </div>
   );
 }

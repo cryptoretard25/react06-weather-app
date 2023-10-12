@@ -1,4 +1,5 @@
 import React from "react";
+import RightBarItem from "./RightBarItem";
 import { requestForecast } from "../scripts/api";
 import * as utils from "../scripts/utils";
 
@@ -1510,7 +1511,11 @@ const forecast = {
 function RightBar() {
   return (
     <div className="right-bar">
-      <button
+      <RightBarItem logo={'./imgs/thermo.svg'} title={"Feels Like"} data={"6 °C"} />
+      <RightBarItem logo={'./imgs/humidity.svg'} title={"Humidity"} data={"75 %"} />
+      <RightBarItem logo={'./imgs/rainy.svg'} title={"Chance of Rain"} data={"0 %"} />
+      <RightBarItem logo={'./imgs/wind.svg'} title={"Wind speed"} data={"8.8 km/h"} />
+      {/* <button
         onClick={async () => {
           // console.log(await requestForecast('Moscoww'))
           console.log(utils.getCurrentWeather(forecast));
@@ -1520,7 +1525,7 @@ function RightBar() {
         }}
       >
         GET
-      </button>
+      </button> */}
     </div>
   );
 }

@@ -1,4 +1,3 @@
-
 .App {
   flex: 1;
 
@@ -11,9 +10,9 @@
   padding: 80px 0;
 }
 
+/*---------------------------------------------------------------------------------*/
 /* <Header> */
-
-.header{
+.header {
   border: 1px solid white;
   padding: 20px 20px 20px 40px;
 
@@ -24,32 +23,128 @@
   justify-content: space-around;
 }
 
-.left-bar{
+.center-bar {
+  flex: 3;
+}
+/* </Header> */
+
+/*---------------------------------------------------------------------------------*/
+/* <RightBar> */
+.right-bar {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px;
+}
+/* </RightBar> */
+
+/*---------------------------------------------------------------------------------*/
+/* <RightBarItem> */
+.weather_details {
+  display: flex;
+  gap: 15px;
+}
+
+.details_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details_icon > img {
+  width: 40px;
+}
+
+.details_info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+/* </RightBarItem> */
+
+/*---------------------------------------------------------------------------------*/
+/* <LeftBar> */
+.left-bar {
   width: 350px;
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.center-bar{
-  flex: 3;
+.precipitation,
+.details_info > h1 {
+  font-weight: lighter;
 }
 
-.right-bar{
-  width: 200px;
+.temperature {
+  padding: 15px 0;
+  font-size: 4rem;
+}
+
+.weather-icon {
+  padding: 15px 0;
+}
+/* </LeftBar> */
+
+/*---------------------------------------------------------------------------------*/
+/* <LeftBarConvertItem> */
+.convert-temp {
+  border: none;
+  background-color: none;
+  font-size: 1rem;
+  text-align: start;
+  padding-bottom: 2px;
+  border-bottom: 2px solid white;
+  align-self: flex-start;
+  cursor: pointer;
+}
+/* </LeftBarConvertItem> */
+
+/*---------------------------------------------------------------------------------*/
+/* <LeftBarSearch> */
+.search-container {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 15px;
-
+  align-items: center;
+  align-self: flex-start;
+  padding-bottom: 2px;
+  border-bottom: 2px solid white;
 }
 
-/* </Header> */
-/*****************************************************************************************/
+input[type="text"] {
+  font-size: 1rem;
+  background-color: rgba(250, 235, 215, 0);
+  border: none;
+  color: white;
+  padding: 0 5px;
+  width: 150px;
+}
+
+input[type="text"]:focus {
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.search-btn > img {
+  width: 25px;
+}
+
+/* </LeftBarSearch> */
+
+
 
 /* <Footer> */
 
-.footer{
+.footer {
   border: 1px solid white;
   padding: 20px 40px 40px 40px;
 
@@ -57,7 +152,7 @@
   height: 300px;
   display: flex;
   flex-direction: column;
-  gap: 30px
+  gap: 30px;
 }
 
 /* </Footer> */
@@ -65,109 +160,40 @@
 /*RIGHT*/
 
 
-#precipitation, .details_info>h1{
-  font-weight: lighter;
-}
-#temperature{
-  padding: 15px 0;
-  font-size: 4rem;
-}
-#convert-temp{
-  border: none;
-  background-color: none;
-  font-size: 1rem;
-  text-align: start;
 
-  padding-bottom: 2px;
-  border-bottom: 2px solid white;
-  
-  align-self: flex-start;
-  cursor: pointer;
-}
-#weather-icon{
-  padding: 15px 0;
-}
-.search-container{
-  display: flex;
-  align-items: center;
-  align-self: flex-start;
-  padding-bottom: 2px;
-  border-bottom: 2px solid white;
-}
-input[type=text]{
-font-size: 1rem;
-background-color: rgba(250, 235, 215, 0);
-border: none;
-color: white;
-padding: 0 5px;
-width: 150px;
-}
-input[type=text]:focus{
-  color: white;
-  border: none;
-  outline: none;
-}
-#search-btn{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-#search-btn>img{
-  width: 25px;
-}
 
 /*CENTER*/
 
 /*LEFT*/
 
-.weather-details{
-  display: flex;
-  gap: 10px;
-}
-.details_icon{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.details_icon>img{
-  width: 40px;
-}
-.details_info{
-  flex:1;
-
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-
-}
 /*****************************************************************************************/
 /*LOWER BOX*/
 
-.interface{
+.interface {
   display: flex;
   gap: 25px;
 }
-.interface-btn{
+.interface-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
   cursor: pointer;
 }
-.selected{
+.selected {
   border: 2px solid white;
 }
-.change_left{
+.change_left {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.change_left>img, .change_right>img{
+.change_left > img,
+.change_right > img {
   height: 25px;
   cursor: pointer;
 }
-.dot{
+.dot {
   position: relative;
   top: -1px;
   height: 15px;
@@ -176,49 +202,50 @@ input[type=text]:focus{
   border-radius: 50%;
   cursor: pointer;
 }
-.dot-selected{
+.dot-selected {
   background-color: white;
 }
-.change-hours{
+.change-hours {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 }
-.show{
+.show {
   display: flex;
 }
-.hide{
+.hide {
   display: none;
 }
-.forecasts-block{
+.forecasts-block {
   display: flex;
   justify-content: space-between;
 }
-.daily-forecast, .hourly-forecast{
+.daily-forecast,
+.hourly-forecast {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.daily_icon{
+.daily_icon {
   flex: 1;
   display: flex;
   align-items: flex-end;
 }
-.daily_icon>img{
+.daily_icon > img {
   width: 50px;
   align-self: flex-end;
 }
 
-::placeholder{
+::placeholder {
   color: white;
 }
-.hourly_time{
+.hourly_time {
   font-size: 1.5rem;
 }
-.hourly_temp{
+.hourly_temp {
   font-size: 1.7rem;
 }
-.hourly_icon>img{
+.hourly_icon > img {
   width: 50px;
 }
