@@ -8,31 +8,39 @@ import RightBar from "./components/RightBar";
 import FooterInterface from "./components/FooterInterface";
 import { FooterContextProvider } from "./context/FooterContextProvider";
 import FooterForecast from "./components/FooterForecast";
+import { HeaderContextProvider } from "./context/HeaderContextProvider";
 
 function App() {
-  const [forecast, setCurrentLocation] = useWeather()
+  const [forecast, setForecast, setCurrentLocation] = useWeather();
 
   return (
     <div className="App">
-      <Header>
-        <LeftBar
-          precipitation={"Few Clouds"}
-          city={"Stockholm"}
-          date={"Thu, October 12, 2023"}
-          time={"05:15:28"}
-          temp={"10 °C"}
-          icon={"./imgs/cloudy-day.svg"}
-        />
-        <div className="center-bar" />
-        <RightBar />
-      </Header>
-
-      <FooterContextProvider forecast={forecast}>
-        <Footer>
-          <FooterInterface />
-          <FooterForecast />
-        </Footer>
-      </FooterContextProvider>
+      {forecast && (
+        <>
+          <HeaderContextProvider
+            forecast={forecast}
+            setForecast={setForecast}
+            setCurrentLocation={setCurrentLocation}
+          >
+            <Header>
+              <LeftBar />
+              <div className="center-bar" />
+              <RightBar />
+            </Header>
+          </HeaderContextProvider>
+          <FooterContextProvider forecast={forecast}>
+            <Footer>
+              <FooterInterface />
+              <FooterForecast />
+            </Footer>
+          </FooterContextProvider>
+        </>
+      )}
+      {!forecast && (
+        <div style={{display: 'flex', height: '100%', alignItems: 'center', justifyContent: 'center'}}>
+          <h2>Loading data...</h2>
+        </div>
+      )}
     </div>
   );
 }
