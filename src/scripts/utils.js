@@ -117,11 +117,11 @@ export function getCurrentWeather(forecast, units = null) {
 }
 
 export function getAdditionalInfo(forecast, units = null) {
-  const { current, daily } = forecast;
+  const { current, hourly } = forecast;
   return {
     feelsLike: getTemp(current.feels_like, units),
     humidity: `${current.humidity} %`,
-    rainChance: `${daily[0].pop * 100} %`,
+    rainChance: `${hourly[0].pop * 100} %`,
     windSpeed: getSpeed(current.wind_speed, units),
   };
 }
