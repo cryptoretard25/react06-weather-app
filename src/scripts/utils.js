@@ -78,19 +78,21 @@ export function timestampToCurrentHour(timestamp, timezone) {
   return `${hour} ${label.toLowerCase()}`;
 }
 
-export function convertTemp(value, units) {
-  return units === "metric"
-    ? `${Math.round(value)} °C`
-    : `${Math.round(value * 1.8 + 32)} °F`;
+export function getTemp(value, units) {
+  if (units === "metric") return `${Math.round((value - 32) / 1.8)} °C`;
+  if (units === "imperial") return `${Math.round(value * 1.8 + 32)} °F`;
+  return `${Math.round(value)} °C`;
 }
 
-export function convertSpeed(value, units) {
-  return units === "metric"
-    ? `${Math.round(value * 10) / 10} km/h`
-    : `${Math.round((value / 1.609344) * 10) / 10} mph`;
+export function getSpeed(value, units) {
+  if (units === "metric")
+    return `${Math.round(value * 1.609344 * 10) / 10} km/h`;
+  if (units === "imperial")
+    return `${Math.round((value / 1.609344) * 10) / 10} mph`;
+  return `${Math.round(value * 10) / 10} km/h`;
 }
 
-export function getCurrentWeather(forecast, units) {
+export function getCurrentWeather(forecast, units = null) {
   const { name, current, timezone } = forecast;
   const { date, time } = timestampToDate(current.dt, timezone);
   return {
@@ -101,22 +103,22 @@ export function getCurrentWeather(forecast, units) {
     city: name,
     date,
     time,
-    temp: convertTemp(current.temp, units),
+    temp: getTemp(current.temp, units),
     icon: current.weather[0].icon,
   };
 }
 
-export function getAdditionalInfo(forecast, units) {
+export function getAdditionalInfo(forecast, units = null) {
   const { current, daily } = forecast;
   return {
-    feelsLike: convertTemp(current.feels_like, units),
+    feelsLike: getTemp(current.feels_like, units),
     humidity: `${current.humidity} %`,
     rainChance: `${daily[0].pop * 100} %`,
-    windSpeed: convertSpeed(current.wind_speed, units),
+    windSpeed: getSpeed(current.wind_speed, units),
   };
 }
 
-export function getDailyForecast(forecast, units) {
+export function getDailyForecast(forecast, units = null) {
   const { daily, timezone } = forecast;
   return daily
     .map((day, index) => {
@@ -124,22 +126,22 @@ export function getDailyForecast(forecast, units) {
       return {
         day: timestampToWeekday(day.dt, timezone),
         date: timestampToShortDate(day.dt, timezone),
-        maxTemp: convertTemp(day.temp.max, units),
-        minTemp: convertTemp(day.temp.min, units),
+        maxTemp: getTemp(day.temp.max, units),
+        minTemp: getTemp(day.temp.min, units),
         icon: day.weather[0].icon,
       };
     })
     .filter((item) => item !== null);
 }
 
-export function getHourlyForecast(forecast, units) {
+export function getHourlyForecast(forecast, units = null) {
   const { hourly, timezone } = forecast;
   return hourly
     .map((hour, index) => {
       if (index > 23) return null;
       return {
         hour: timestampToCurrentHour(hour.dt, timezone),
-        temp: convertTemp(hour.temp, units),
+        temp: getTemp(hour.temp, units),
         icon: hour.weather[0].icon,
       };
     })

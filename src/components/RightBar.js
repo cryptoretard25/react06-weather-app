@@ -1513,8 +1513,10 @@ function RightBar() {
       <button
         onClick={async () => {
           // console.log(await requestForecast('Moscoww'))
-          console.log(utils.getCurrentWeather(forecast, "metric"));
-          console.log(utils.getAdditionalInfo(forecast, "metric"));
+          console.log(utils.getCurrentWeather(forecast));
+          console.log(utils.getAdditionalInfo(forecast));
+          console.log(utils.getDailyForecast(forecast));
+          console.log(utils.getHourlyForecast(forecast));
         }}
       >
         GET

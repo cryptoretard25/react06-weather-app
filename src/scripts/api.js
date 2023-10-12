@@ -34,7 +34,7 @@ const requestCoords = async (city) => {
   }
 };
 
-const requestForecast = async (city, units = CONSTANTS.OPENWEATHER_UNITS) => {
+const requestForecast = async (city, units = CONSTANTS.OPENWEATHER_UNITS, setState) => {
   try {
     const { name, lat, lon } = await requestCoords(city);
     const response = await axios.get(
@@ -42,9 +42,10 @@ const requestForecast = async (city, units = CONSTANTS.OPENWEATHER_UNITS) => {
     );
     const { current, daily, hourly, timezone } = response.data;
     return { name, current, daily, hourly, timezone };
+    // return response.data
   } catch (error) {
     console.error(error);
   }
 };
 
-export { requestCurrentLocation, requestCoords, requestForecast };
+export { requestForecast, requestCurrentLocation };
