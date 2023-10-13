@@ -75,28 +75,15 @@ export function timestampToCurrentHour(timestamp, timezone) {
   return `${hour} ${label.toLowerCase()}`;
 }
 
-export function getTemp(value, units, converted) {
-  if (units === "metric" && converted) {
-    converted = false;
-    return `${Math.round((value - 32) / 1.8)} °C`;
-  }
-  if (units === "imperial") {
-    converted = true;
-    return `${Math.round(value * 1.8 + 32)} °F`;
-  }
+export function getTemp(value, units) {
+ // if (units === "METRIC") return `${Math.round(value)} °C`;
+  if (units) return `${Math.round(value * 1.8 + 32)} °F`;
   return `${Math.round(value)} °C`;
 }
 
-export function getSpeed(value, units, converted) {
-  if (units === "metric" && converted) {
-    converted = false;
-    return `${Math.round(value * 1.609344 * 10) / 10} km/h`;
-  }
-  if (units === "imperial") {
-    converted = true;
-    return `${Math.round((value / 1.609344) * 10) / 10} mph`;
-  }
-
+export function getSpeed(value, units) {
+  //if (units === "METRIC") return `${Math.round(value * 10) / 10} km/h`;
+  if (units) return `${Math.round((value / 1.609344) * 10) / 10} mph`;
   return `${Math.round(value * 10) / 10} km/h`;
 }
 
@@ -155,8 +142,8 @@ export function getHourlyForecast(forecast, units = null) {
     })
     .filter((item) => item !== null);
   const result = [];
-  while(arr.length){
+  while (arr.length) {
     result.push(arr.splice(0, 8));
   }
-  return result
+  return result;
 }

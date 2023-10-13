@@ -8,23 +8,35 @@ const HeaderContextProvider = ({
   forecast,
   setForecast,
   setCurrentLocation,
+  units,
+  setUnits,
 }) => {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [additionalInfo, setAdditionalInfo] = useState(null);
 
   useEffect(() => {
     if (forecast) {
-      setCurrentWeather(utils.getCurrentWeather(forecast));
-      setAdditionalInfo(utils.getAdditionalInfo(forecast));
+      setCurrentWeather(utils.getCurrentWeather(forecast, units));
+      setAdditionalInfo(utils.getAdditionalInfo(forecast, units));
     }
-  }, [forecast]);
+  }, [forecast, units]);
 
-  useEffect(()=>{
-    if(forecast) console.log(currentWeather, additionalInfo)
-  }, [currentWeather, additionalInfo])
+  useEffect(() => {
+    if (forecast) console.log(currentWeather, additionalInfo);
+  }, [currentWeather, additionalInfo]);
 
   return (
-    <HeaderContext.Provider value={{ currentWeather , additionalInfo, setForecast, setCurrentLocation}}>
+    <HeaderContext.Provider
+      value={{
+        forecast,
+        currentWeather,
+        additionalInfo,
+        setForecast,
+        setCurrentLocation,
+        units,
+        setUnits,
+      }}
+    >
       {children}
     </HeaderContext.Provider>
   );

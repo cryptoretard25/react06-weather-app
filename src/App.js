@@ -11,7 +11,8 @@ import FooterForecast from "./components/FooterForecast";
 import { HeaderContextProvider } from "./context/HeaderContextProvider";
 
 function App() {
-  const [forecast, setForecast, setCurrentLocation] = useWeather();
+  const [forecast, setForecast, setCurrentLocation, units, setUnits] =
+    useWeather();
 
   return (
     <div className="App">
@@ -21,6 +22,8 @@ function App() {
             forecast={forecast}
             setForecast={setForecast}
             setCurrentLocation={setCurrentLocation}
+            units={units}
+            setUnits={setUnits}
           >
             <Header>
               <LeftBar />
@@ -28,7 +31,7 @@ function App() {
               <RightBar />
             </Header>
           </HeaderContextProvider>
-          <FooterContextProvider forecast={forecast}>
+          <FooterContextProvider forecast={forecast} units={units} >
             <Footer>
               <FooterInterface />
               <FooterForecast />
@@ -37,7 +40,14 @@ function App() {
         </>
       )}
       {!forecast && (
-        <div style={{display: 'flex', height: '100%', alignItems: 'center', justifyContent: 'center'}}>
+        <div
+          style={{
+            display: "flex",
+            height: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <h2>Loading data...</h2>
         </div>
       )}

@@ -1483,6 +1483,7 @@ const mockedForecast = {
 function useWeather() {
   const [forecast, setForecast] = useState(null);
   const [currentLocation, setCurrentLocation] = useState(null);
+  const [units, setUnits] = useState(false)
 
   useEffect(() => {
     (async () => {
@@ -1509,7 +1510,7 @@ function useWeather() {
     if (forecast) console.log(forecast);
   }, [forecast]);
 
-  return [forecast, setForecast, setCurrentLocation];
+  return [forecast, setForecast, setCurrentLocation, units, setUnits];
 }
 
 export default useWeather;

@@ -5,19 +5,19 @@ function LeftBarSearch() {
   const { setCurrentLocation } = useContext(HeaderContext);
   const [inputValue, setInputValue] = useState("");
 
-  const handleSearchClick = (e)=>{
-    e.preventDefault()
-    setCurrentLocation(inputValue)
-    setInputValue('')
-  }
+  const handleSearchClick = (e) => {
+    e.preventDefault();
+    setCurrentLocation(inputValue);
+    setInputValue("");
+  };
 
-  const handleKeyDown = (e)=>{
-    if(e.key === 'Enter' && inputValue){
-      e.preventDefault()
-      setCurrentLocation(inputValue)
-      setInputValue('')
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && inputValue) {
+      e.preventDefault();
+      setCurrentLocation(inputValue);
+      setInputValue("");
     }
-  }
+  };
 
   return (
     <div className="search-container">

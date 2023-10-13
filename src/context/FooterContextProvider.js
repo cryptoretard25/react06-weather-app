@@ -3,7 +3,7 @@ import * as utils from '../scripts/utils'
 
 const FooterContext = createContext();
 
-const FooterContextProvider = ({ children, forecast }) => {
+const FooterContextProvider = ({ children, forecast, units }) => {
   const [dotIndex, setDotIndex] = useState(0);
   const [activeButton, setActiveButton] = useState([true, false]);
   const [dailyForecast, setDailyForecast] = useState(null);
@@ -11,9 +11,9 @@ const FooterContextProvider = ({ children, forecast }) => {
 
   useEffect(() => {
     if(forecast){
-    setDailyForecast(utils.getDailyForecast(forecast));
-    setHourlyForecast(utils.getHourlyForecast(forecast));}
-  }, [forecast]);
+    setDailyForecast(utils.getDailyForecast(forecast, units));
+    setHourlyForecast(utils.getHourlyForecast(forecast, units));}
+  }, [forecast, units]);
 
   // useEffect(()=>{
   //   if(forecast) console.log(dailyForecast, hourlyForecast)
