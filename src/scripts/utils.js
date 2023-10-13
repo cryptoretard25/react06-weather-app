@@ -76,13 +76,11 @@ export function timestampToCurrentHour(timestamp, timezone) {
 }
 
 export function getTemp(value, units) {
- // if (units === "METRIC") return `${Math.round(value)} °C`;
   if (units) return `${Math.round(value * 1.8 + 32)} °F`;
   return `${Math.round(value)} °C`;
 }
 
 export function getSpeed(value, units) {
-  //if (units === "METRIC") return `${Math.round(value * 10) / 10} km/h`;
   if (units) return `${Math.round((value / 1.609344) * 10) / 10} mph`;
   return `${Math.round(value * 10) / 10} km/h`;
 }
@@ -117,7 +115,7 @@ export function getDailyForecast(forecast, units = null) {
   const { daily, timezone } = forecast;
   return daily
     .map((day, index) => {
-      if (index === 0) return null;
+      // if (index === 0) return null;
       return {
         weekday: timestampToWeekday(day.dt, timezone),
         date: timestampToShortDate(day.dt, timezone),
@@ -126,7 +124,7 @@ export function getDailyForecast(forecast, units = null) {
         icon: day.weather[0].icon,
       };
     })
-    .filter((item) => item !== null);
+    // .filter((item) => item !== null);
 }
 
 export function getHourlyForecast(forecast, units = null) {
