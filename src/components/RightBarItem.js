@@ -4,7 +4,7 @@ function RightBarItem({logo, title, data}) {
   return (
     <div className="weather_details">
       <div className="details_icon">
-        <img src={logo} alt="Feels Like" />
+        <img src={`${process.env.PUBLIC_URL}${logo}`} alt="" />
       </div>
       <div className="details_info">
         <p>{title}</p>

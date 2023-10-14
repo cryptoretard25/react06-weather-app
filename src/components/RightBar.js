@@ -10,22 +10,22 @@ function RightBar() {
       {additionalInfo && (
         <>
           <RightBarItem
-            logo={"./imgs/thermo.svg"}
+            logo={"/imgs/thermo.svg"}
             title={"Feels Like"}
             data={additionalInfo.feelsLike}
           />
           <RightBarItem
-            logo={"./imgs/humidity.svg"}
+            logo={"/imgs/humidity.svg"}
             title={"Humidity"}
             data={additionalInfo.humidity}
           />
           <RightBarItem
-            logo={"./imgs/rainy.svg"}
+            logo={"/imgs/rainy.svg"}
             title={"Chance of Rain"}
             data={additionalInfo.rainChance}
           />
           <RightBarItem
-            logo={"./imgs/wind.svg"}
+            logo={"/imgs/wind.svg"}
             title={"Wind speed"}
             data={additionalInfo.windSpeed}
           />

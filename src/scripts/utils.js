@@ -1,25 +1,25 @@
 export function getIconByCode(code) {
   const codes = {
-    "01d": "./imgs/sun.svg",
-    "01n": "./imgs/moon.svg",
-    "02d": "./imgs/cloudy-day.svg",
-    "02n": "./imgs/cloudy-night.svg",
-    "03d": "./imgs/cloud.svg",
-    "03n": "./imgs/cloud.svg",
-    "04d": "./imgs/cloudy.svg",
-    "04n": "./imgs/cloudy.svg",
-    "09d": "./imgs/rainy.svg",
-    "09n": "./imgs/rainy.svg",
-    "10d": "./imgs/rainy.svg",
-    "10n": "./imgs/rainy.svg",
-    "11d": "./imgs/lightning.svg",
-    "11n": "./imgs/lightning.svg",
-    "13d": "./imgs/snow.svg",
-    "13n": "./imgs/snow.svg",
-    "50d": "./imgs/mist.svg",
-    "50n": "./imgs/mist.svg",
+    "01d": "/imgs/sun.svg",
+    "01n": "/imgs/moon.svg",
+    "02d": "/imgs/cloudy-day.svg",
+    "02n": "/imgs/cloudy-night.svg",
+    "03d": "/imgs/cloud.svg",
+    "03n": "/imgs/cloud.svg",
+    "04d": "/imgs/cloudy.svg",
+    "04n": "/imgs/cloudy.svg",
+    "09d": "/imgs/rainy.svg",
+    "09n": "/imgs/rainy.svg",
+    "10d": "/imgs/rainy.svg",
+    "10n": "/imgs/rainy.svg",
+    "11d": "/imgs/lightning.svg",
+    "11n": "/imgs/lightning.svg",
+    "13d": "/imgs/snow.svg",
+    "13n": "/imgs/snow.svg",
+    "50d": "/imgs/mist.svg",
+    "50n": "/imgs/mist.svg",
   };
-  return codes[code];
+  return `${process.env.PUBLIC_URL}${codes[code]}`;
 }
 
 export function capitalize(string) {

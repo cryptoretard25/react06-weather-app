@@ -190,11 +190,11 @@ input[type="text"]:focus {
 }
 
 .change-left {
-  background-image: url("./imgs/arrow_left.svg");
+  background-image: url("../public/imgs/arrow_left.svg");
 }
 
 .change-right {
-  background-image: url("./imgs/arrow_right.svg");
+  background-image: url("../public/imgs/arrow_right.svg");
 }
 
 .selected {
