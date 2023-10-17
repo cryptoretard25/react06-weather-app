@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import LeftBarConvertItem from "./LeftBarConvertItem";
 import LeftBarSearch from "./LeftBarSearch";
 import { HeaderContext } from "../context/HeaderContextProvider";
-import * as utils from "../scripts/utils";
+import * as Weather from "./Weather.js";
 
 function LeftBar() {
   const {currentWeather} = useContext(HeaderContext)
@@ -18,7 +18,7 @@ function LeftBar() {
           <h1 className="temperature">{currentWeather.temp}</h1>
           <LeftBarConvertItem />
           <div className="weather-icon">
-            <img width="100" src={utils.getIconByCode(currentWeather.icon)} alt="" />
+            {Weather.getWeather(currentWeather.icon, '6x')}
           </div>
           <LeftBarSearch />
         </>

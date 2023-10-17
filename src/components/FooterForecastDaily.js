@@ -1,5 +1,5 @@
 import React from "react";
-import * as utils from "../scripts/utils";
+import * as Weather from "./Weather.js";
 
 function FooterForecastDaily({ weekday, date, maxTemp, minTemp, icon }) {
   return (
@@ -11,7 +11,7 @@ function FooterForecastDaily({ weekday, date, maxTemp, minTemp, icon }) {
         <p>{minTemp}</p>
       </div>
       <div className="daily_icon">
-        <img src={utils.getIconByCode(icon)} alt="" />
+        {Weather.getWeather(icon, '3x')}
       </div>
     </div>
   );

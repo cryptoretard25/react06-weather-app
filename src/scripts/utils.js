@@ -113,32 +113,28 @@ export function getAdditionalInfo(forecast, units = null) {
 
 export function getDailyForecast(forecast, units = null) {
   const { daily, timezone } = forecast;
-  return daily
-    .map((day, index) => {
-      // if (index === 0) return null;
-      return {
-        weekday: timestampToWeekday(day.dt, timezone),
-        date: timestampToShortDate(day.dt, timezone),
-        maxTemp: getTemp(day.temp.max, units),
-        minTemp: getTemp(day.temp.min, units),
-        icon: day.weather[0].icon,
-      };
-    })
-    // .filter((item) => item !== null);
+  return daily.map((day, index) => {
+    // if (index === 0) return null;
+    return {
+      weekday: timestampToWeekday(day.dt, timezone),
+      date: timestampToShortDate(day.dt, timezone),
+      maxTemp: getTemp(day.temp.max, units),
+      minTemp: getTemp(day.temp.min, units),
+      icon: day.weather[0].icon,
+    };
+  });
+  // .filter((item) => item !== null);
 }
 
 export function getHourlyForecast(forecast, units = null) {
   const { hourly, timezone } = forecast;
-  const arr = hourly
-    .map((hour, index) => {
-      if (index > 23) return null;
-      return {
-        time: timestampToCurrentHour(hour.dt, timezone),
-        temp: getTemp(hour.temp, units),
-        icon: hour.weather[0].icon,
-      };
-    })
-    .filter((item) => item !== null);
+  const arr = hourly.slice(0, 24).map((hour) => {
+    return {
+      time: timestampToCurrentHour(hour.dt, timezone),
+      temp: getTemp(hour.temp, units),
+      icon: hour.weather[0].icon,
+    };
+  });
   const result = [];
   while (arr.length) {
     result.push(arr.splice(0, 8));

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import RightBarItem from "./RightBarItem";
 import { HeaderContext } from "../context/HeaderContextProvider";
+import * as Weather from './Weather.js'
 
 function RightBar() {
   const {additionalInfo} = useContext(HeaderContext)
@@ -10,22 +11,22 @@ function RightBar() {
       {additionalInfo && (
         <>
           <RightBarItem
-            logo={"/imgs/thermo.svg"}
+            logo={<Weather.Termometer size={"3x"} />}
             title={"Feels Like"}
             data={additionalInfo.feelsLike}
           />
           <RightBarItem
-            logo={"/imgs/humidity.svg"}
+            logo={<Weather.Umbrella size={"3x"} />}
             title={"Humidity"}
             data={additionalInfo.humidity}
           />
           <RightBarItem
-            logo={"/imgs/rainy.svg"}
+            logo={<Weather.CloudRain size={"3x"} />}
             title={"Chance of Rain"}
             data={additionalInfo.rainChance}
           />
           <RightBarItem
-            logo={"/imgs/wind.svg"}
+            logo={<Weather.Wind size={"3x"} />}
             title={"Wind speed"}
             data={additionalInfo.windSpeed}
           />

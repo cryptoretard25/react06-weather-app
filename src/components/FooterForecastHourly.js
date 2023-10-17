@@ -1,5 +1,5 @@
 import React from 'react'
-import * as utils from "../scripts/utils";
+import * as Weather from "./Weather.js";
 
 function FooterForecastHourly({time, temp, icon}) {
   return (
@@ -7,7 +7,7 @@ function FooterForecastHourly({time, temp, icon}) {
       <div className="hourly_time">{time}</div>
       <div className="hourly_temp">{temp}</div>
       <div className="hourly_icon">
-        <img src={utils.getIconByCode(icon)} alt="" />
+        {Weather.getWeather(icon, '3x')}
       </div>
     </div>
   );
