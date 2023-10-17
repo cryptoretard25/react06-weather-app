@@ -32,7 +32,7 @@ function LeftBarSearch() {
         placeholder="Search..."
       />
       <div className="search-btn" onClick={handleSearchClick}>
-        <img src="./imgs/search-icon.png" alt="" />
+        <img src={`${process.env.PUBLIC_URL}/imgs/search-icon.png`} alt="" />
       </div>
     </div>
   );
