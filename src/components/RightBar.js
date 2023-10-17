@@ -16,12 +16,12 @@ function RightBar() {
             data={additionalInfo.feelsLike}
           />
           <RightBarItem
-            logo={<Weather.Umbrella size={"3x"} />}
+            logo={<Weather.Water size={"3x"} />}
             title={"Humidity"}
             data={additionalInfo.humidity}
           />
           <RightBarItem
-            logo={<Weather.CloudRain size={"3x"} />}
+            logo={<Weather.Umbrella size={"3x"} />}
             title={"Chance of Rain"}
             data={additionalInfo.rainChance}
           />

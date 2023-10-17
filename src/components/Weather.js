@@ -11,6 +11,7 @@ import {
   faCloudMoon,
   faCloud,
   faCloudShowersHeavy,
+  faWater,
   faCloudBolt,
   faSmog,
   faSnowflake,
@@ -66,6 +67,10 @@ export function Snow({ size }) {
 
 export function Mist({ size }) {
   return <FontAwesomeIcon icon={faSmog} size={size} />;
+}
+
+export function Water({size}) {
+  return <FontAwesomeIcon icon={faWater} size={size} />;
 }
 
 export function getWeather(code, size) {
